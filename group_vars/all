@@ -1,0 +1,16 @@
+wp_db_name: wordpress
+wp_db_user: worduser
+wp_db_password: asdf
+  
+mysql_port: 3306
+mysql_root_password: root
+
+auto_up_disable: true
+
+servers:
+     - 192.168.1.2
+
+core_update_level: true
+
+username: belajar1
+pw: belajar

@@ -1,0 +1,12 @@
+- name: Install NTP
+  become: true
+  apt:
+     name: ntp
+     state: present
+
+- name: Start NTP
+  become: true
+  service:
+     name: ntp
+     state: started
+     enabled: true

@@ -1,0 +1,12 @@
+- name: creating user from secret.yml
+  become: true
+  user:
+          name: "{{ username }}"
+          password: "{{pw | password_hash('sha512')}}"
+
+- name: add user sudo
+  template: 'src=../templates/sudo_user dest=/etc/sudoers.d/{{ item }}'
+  become: yes
+  with_items:
+          - belajar1
+

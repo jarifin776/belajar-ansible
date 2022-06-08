@@ -1,0 +1,29 @@
+---
+- name: Install mysql
+  become: yes
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - mysql-server
+    - python3-mysqldb
+
+- name: Start the MySQL service
+  action: service name=mysql state=started
+
+- name: Create mysql database
+  become: true
+  mysql_db:
+    login_user: root
+    name: "wordpress"
+    collation: utf8mb4_general_ci
+    encoding: utf8mb4
+    state: present
+
+- name: Create mysql user
+  become: true
+  mysql_user:
+    login_user: root
+    name: "worduser"
+    password: "asdf"
+    priv: "*.*:ALL"
+
